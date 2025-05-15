@@ -110,12 +110,58 @@
         .hidden {
             display: none;
         }
+
+
+
+
+
+
+        .dark-mode {
+    background: linear-gradient(to right, #1e1e1e, #2c2c2c, #3a3a3a) !important;
+    color: #e0e0e0;
+}
+
+.dark-mode nav {
+    background-color: #111 !important;
+}
+
+.dark-mode .container {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.dark-mode .form-control {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+.dark-mode .btn-custom {
+    background-color: #3a995f;
+}
+
+.dark-mode .btn-outline-light {
+    color: #ccc;
+    border-color: #666;
+}
+
+.dark-mode .toggle-password i {
+    color: #e0e0e0;
+}
+
     </style>
+
+   
+
 </head>
 
 <body>
     <nav>
         <h1><i class="fas fa-user-secret"></i> Stegomask: Image Steganography Tool </h1>
+        <div class="form-check form-switch text-light">
+            
+    <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch">
+    <label class="form-check-label" for="darkModeSwitch"><i class="fas fa-moon"></i></label>
+</div>
+
     </nav>
 
     <div class="container">
@@ -142,7 +188,7 @@
             <div class="mb-3 password-wrapper">
                 <label for="encodePassword">Encryption Password</label>
                 <input class="form-control" type="password" id="encodePassword" placeholder="Enter a password" oninput="checkStrength(this.value)" >
-                 <span class="toggle-password" onclick="togglePassword('encodePassword', this)">👁️</span>
+                 <span class="toggle-password" onclick="togglePassword('encodePassword', this)"><i id="icon" class=" fas fa-eye"></i></span>
             </div>
             <small id="passwordStrength" class="strength-text"></small>
             <div class="mb-3">
@@ -162,7 +208,7 @@
             <div class="mb-3 password-wrapper">
                 <label for="decodePassword">Decryption Password</label>
                 <input class="form-control" type="password" id="decodePassword" placeholder="Enter the password" >
-                <span class="toggle-password" onclick="togglePassword('decodePassword', this)">👁️</span>
+                <span class="toggle-password" onclick="togglePassword('decodePassword', this)"><i id="icon1" class="fas fa-eye"></i></span>
             </div>
             
             <div class="mb-3">
@@ -210,14 +256,21 @@
         
     </script>
     <script>
-        function togglePassword(inputId, toggleIcon) {
+        function togglePassword(inputId) {
     const input = document.getElementById(inputId);
+    const icon = document.getElementById('icon');
     if (input.type === "password") {
         input.type = "text";
-        toggleIcon.textContent = "🙈";
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+        icon1.classList.remove("fa-eye");
+        icon1.classList.add("fa-eye-slash");
     } else {
         input.type = "password";
-        toggleIcon.textContent = "👁️";
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+        icon1.classList.remove("fa-eye-slash");
+        icon1.classList.add("fa-eye");
     }
 }
 </script>
@@ -246,6 +299,21 @@
 }
 
     </script>
+     <script>
+    const darkSwitch = document.getElementById('darkModeSwitch');
+    const toggleDark = document.querySelector(".form-check-label i");
+    darkSwitch.addEventListener('change', function () {
+        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+        toggleDark.classList.remove("fa-moon");
+        toggleDark.classList.add("fa-sun");
+    }
+    else {
+        toggleDark.classList.remove("fa-sun");
+        toggleDark.classList.add("fa-moon");
+    }
+    });
+</script>
 </body>
 
 </html>
