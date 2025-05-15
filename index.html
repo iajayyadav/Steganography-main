@@ -14,6 +14,15 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        body,
+        nav,
+        .container,
+        .form-control,
+        .btn,
+        .strength-text {
+            transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+        }
+
         nav {
             background-color: #1e3c72;
             padding: 1rem 2rem;
@@ -27,7 +36,7 @@
             margin: 0;
             font-size: 1.8rem;
         }
-       
+
 
         .container {
             margin-top: 5rem;
@@ -40,42 +49,45 @@
 
 
         .password-wrapper {
-    position: relative;
-    /* width: 87%; */
-    margin: 10px auto;
-}
+            position: relative;
+            /* width: 87%; */
+            margin: 10px auto;
+        }
 
-.password-wrapper input {
-    width: 100%;
-    padding-right: 40px;
-}
+        .password-wrapper input {
+            width: 100%;
+            padding-right: 40px;
+        }
 
-.toggle-password {
-    position: absolute;
-    top: 40px;
-    right: 10px;
-    cursor: pointer;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #333;
-}
+        .toggle-password {
+            position: absolute;
+            top: 40px;
+            right: 10px;
+            cursor: pointer;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #333;
+        }
 
-.strength-text {
-    display: block;
-    text-align: left;
-    margin: 5px;
-    font-size: 14px;
-    font-weight: bold;
-}
-.strength-weak {
-    color: red;
-}
-.strength-medium {
-    color: orange;
-}
-.strength-strong {
-    color: rgb(38, 220, 38);
-}
+        .strength-text {
+            display: block;
+            text-align: left;
+            margin: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .strength-weak {
+            color: red;
+        }
+
+        .strength-medium {
+            color: orange;
+        }
+
+        .strength-strong {
+            color: rgb(38, 220, 38);
+        }
 
 
 
@@ -90,14 +102,19 @@
             background-color: #34b550;
             transform: scale(1.05);
         }
-        #encodeSection h4{
+
+        #encodeSection h4 {
             color: #4ef873;
         }
-        textarea, input[type="file"], input[type="password"] {
+
+        textarea,
+        input[type="file"],
+        input[type="password"] {
             /* background-color: rgba(255, 255, 255, 0.1); */
-            color:#1e3c72;
+            color: #1e3c72;
         }
-        input[type="password"]{
+
+        input[type="password"] {
             color: #34b550;
         }
 
@@ -117,39 +134,38 @@
 
 
         .dark-mode {
-    background: linear-gradient(to right, #1e1e1e, #2c2c2c, #3a3a3a) !important;
-    color: #e0e0e0;
-}
+            background: linear-gradient(to right, #1e1e1e, #2c2c2c, #3a3a3a) !important;
+            color: #e0e0e0;
+        }
 
-.dark-mode nav {
-    background-color: #111 !important;
-}
+        .dark-mode nav {
+            background-color: #111 !important;
+        }
 
-.dark-mode .container {
-    background-color: rgba(255, 255, 255, 0.08);
-}
+        .dark-mode .container {
+            background-color: rgba(255, 255, 255, 0.08);
+        }
 
-.dark-mode .form-control {
-    background-color: #333;
-    color: #e0e0e0;
-}
+        .dark-mode .form-control {
+            background-color: #333;
+            color: #e0e0e0;
+        }
 
-.dark-mode .btn-custom {
-    background-color: #3a995f;
-}
+        .dark-mode .btn-custom {
+            background-color: #3a995f;
+        }
 
-.dark-mode .btn-outline-light {
-    color: #ccc;
-    border-color: #666;
-}
+        .dark-mode .btn-outline-light {
+            color: #ccc;
+            border-color: #666;
+        }
 
-.dark-mode .toggle-password i {
-    color: #e0e0e0;
-}
-
+        .dark-mode .toggle-password i {
+            color: #e0e0e0;
+        }
     </style>
 
-   
+
 
 </head>
 
@@ -157,17 +173,18 @@
     <nav>
         <h1><i class="fas fa-user-secret"></i> Stegomask: Image Steganography Tool </h1>
         <div class="form-check form-switch text-light">
-            
-    <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch">
-    <label class="form-check-label" for="darkModeSwitch"><i class="fas fa-moon"></i></label>
-</div>
+
+            <input class="form-check-input" type="checkbox" role="switch" id="darkModeSwitch">
+            <label class="form-check-label" for="darkModeSwitch"><i class="fas fa-moon"></i></label>
+        </div>
 
     </nav>
 
     <div class="container">
         <div class="text-center mb-4">
             <h2>Image Steganography Tool</h2>
-            <p class="text-light">Securely hide and retrieve text in images using AES and alpha channel steganography</p>
+            <p class="text-light">Securely hide and retrieve text in images using AES and alpha channel steganography
+            </p>
         </div>
 
         <div class="d-flex justify-content-center gap-3 mb-4">
@@ -183,12 +200,15 @@
             </div>
             <div class="mb-3">
                 <label for="textInput">Text to Hide</label>
-                <textarea class="form-control" id="textInput" rows="4" placeholder="Type your secret message here..."></textarea>
+                <textarea class="form-control" id="textInput" rows="4"
+                    placeholder="Type your secret message here..."></textarea>
             </div>
             <div class="mb-3 password-wrapper">
                 <label for="encodePassword">Encryption Password</label>
-                <input class="form-control" type="password" id="encodePassword" placeholder="Enter a password" oninput="checkStrength(this.value)" >
-                 <span class="toggle-password" onclick="togglePassword('encodePassword', this)"><i id="icon" class=" fas fa-eye"></i></span>
+                <input class="form-control" type="password" id="encodePassword" placeholder="Enter a password"
+                    oninput="checkStrength(this.value)">
+                <span class="toggle-password" onclick="togglePassword('encodePassword', this)"><i id="icon"
+                        class=" fas fa-eye"></i></span>
             </div>
             <small id="passwordStrength" class="strength-text"></small>
             <div class="mb-3">
@@ -207,10 +227,11 @@
             </div>
             <div class="mb-3 password-wrapper">
                 <label for="decodePassword">Decryption Password</label>
-                <input class="form-control" type="password" id="decodePassword" placeholder="Enter the password" >
-                <span class="toggle-password" onclick="togglePassword('decodePassword', this)"><i id="icon1" class="fas fa-eye"></i></span>
+                <input class="form-control" type="password" id="decodePassword" placeholder="Enter the password">
+                <span class="toggle-password" onclick="togglePassword('decodePassword', this)"><i id="icon1"
+                        class="fas fa-eye"></i></span>
             </div>
-            
+
             <div class="mb-3">
                 <button class="btn btn-custom" id="decodeImageBtn">Decode Message</button>
             </div>
@@ -236,84 +257,84 @@
         encodeBtn.addEventListener('click', () => {
             encodeSection.classList.remove('hidden');
             decodeSection.classList.add('hidden');
-            imageInput.value="";
-            textInput.value="";
-            passwordInput.value="";
+            imageInput.value = "";
+            textInput.value = "";
+            passwordInput.value = "";
 
         });
 
         decodeBtn.addEventListener('click', () => {
             decodeSection.classList.remove('hidden');
             encodeSection.classList.add('hidden');
-            imageInput.value="";
-            textInput.value=NaN;
-            passwordInput.value="";
+            imageInput.value = "";
+            textInput.value = NaN;
+            passwordInput.value = "";
         });
 
 
 
 
-        
+
     </script>
     <script>
         function togglePassword(inputId) {
-    const input = document.getElementById(inputId);
-    const icon = document.getElementById('icon');
-    if (input.type === "password") {
-        input.type = "text";
-        icon.classList.remove("fa-eye");
-        icon.classList.add("fa-eye-slash");
-        icon1.classList.remove("fa-eye");
-        icon1.classList.add("fa-eye-slash");
-    } else {
-        input.type = "password";
-        icon.classList.remove("fa-eye-slash");
-        icon.classList.add("fa-eye");
-        icon1.classList.remove("fa-eye-slash");
-        icon1.classList.add("fa-eye");
-    }
-}
-</script>
-<script>
-    function checkStrength(password) {
-    const strengthText = document.getElementById('passwordStrength');
-    let strength = 0;
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById('icon');
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+                icon1.classList.remove("fa-eye");
+                icon1.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+                icon1.classList.remove("fa-eye-slash");
+                icon1.classList.add("fa-eye");
+            }
+        }
+    </script>
+    <script>
+        function checkStrength(password) {
+            const strengthText = document.getElementById('passwordStrength');
+            let strength = 0;
 
-    if (password.length >= 8) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[^A-Za-z0-9]/.test(password)) strength++;
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
 
-    if (strength === 0) {
-        strengthText.textContent = "";
-    } else if (strength <= 1) {
-        strengthText.textContent = "Weak";
-        strengthText.className = "strength-text strength-weak";
-    } else if (strength === 2 || strength === 3) {
-        strengthText.textContent = "Medium";
-        strengthText.className = "strength-text strength-medium";
-    } else {
-        strengthText.textContent = "Strong";
-        strengthText.className = "strength-text strength-strong";
-    }
-}
+            if (strength === 0) {
+                strengthText.textContent = "";
+            } else if (strength <= 1) {
+                strengthText.textContent = "Weak";
+                strengthText.className = "strength-text strength-weak";
+            } else if (strength === 2 || strength === 3) {
+                strengthText.textContent = "Medium";
+                strengthText.className = "strength-text strength-medium";
+            } else {
+                strengthText.textContent = "Strong";
+                strengthText.className = "strength-text strength-strong";
+            }
+        }
 
     </script>
-     <script>
-    const darkSwitch = document.getElementById('darkModeSwitch');
-    const toggleDark = document.querySelector(".form-check-label i");
-    darkSwitch.addEventListener('change', function () {
-        document.body.classList.toggle('dark-mode');
-        if (document.body.classList.contains('dark-mode')) {
-        toggleDark.classList.remove("fa-moon");
-        toggleDark.classList.add("fa-sun");
-    }
-    else {
-        toggleDark.classList.remove("fa-sun");
-        toggleDark.classList.add("fa-moon");
-    }
-    });
-</script>
+    <script>
+        const darkSwitch = document.getElementById('darkModeSwitch');
+        const toggleDark = document.querySelector(".form-check-label i");
+        darkSwitch.addEventListener('change', function () {
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                toggleDark.classList.remove("fa-moon");
+                toggleDark.classList.add("fa-sun");
+            }
+            else {
+                toggleDark.classList.remove("fa-sun");
+                toggleDark.classList.add("fa-moon");
+            }
+        });
+    </script>
 </body>
 
 </html>
